@@ -1,3 +1,4 @@
+import textwrap
 from room import Room
 
 # Declare all the rooms
