@@ -1,5 +1,6 @@
 import textwrap
 from room import Room
+from player import Player
 
 # Declare all the rooms
 
@@ -65,13 +66,13 @@ while not done:
     print('\n')
 
     command = input(
-        "What do you want to do? To pick up items use 'p0', 'p1', etc...  To drop items use 'd0', 'd1', etc...('q' or 'quit' to quit) ")
+        "What do you want to do?\nTo navigate use 'n' 's' 'e' 'w'\nTo pick up items use 'grab0', 'grab1', etc...\nTo drop items use 'drop0', 'drop1', etc...\n('q' or 'quit' to quit) ")
 
     if command in ['n', 's', 'e', 'w']:
         player.location = player.move_to(command, player.location)
         continue
 
-    elif command[0] == 'p':
+    elif command[0] == 'grab':
         item = int(command[1:])
         if item >= 0 and item < len(player.location.items):
             print('\n', player.name, ' picks up ', player.location.items[item])
@@ -80,7 +81,7 @@ while not done:
         else:
             print('that item does not exist')
 
-    elif command[0] == 'd':
+    elif command[0] == 'drop':
         item = int(command[1:])
         if item >= 0 and item < len(player.items):
             print('\n', player.name, ' drops ', player.items[item])
@@ -93,4 +94,4 @@ while not done:
         done = True
 
     else:
-        print('I dont understand what you want, use n to move north, e to move east, s to move south, and w to move west \n')
+        print('Invalid command you FOOL!, use n to move north, e to move east, s to move south, and w to move west \n')
